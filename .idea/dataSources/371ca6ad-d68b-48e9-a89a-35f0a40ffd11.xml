@@ -1,88 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="companydb@localhost">
+<dataSource name="company@localhost">
   <database-model serializer="dbm" rdbms="DERBY" format-version="4.7">
     <root id="1"/>
     <schema id="2" parent="1" name="APP">
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="DERBYUSER">
-      <Current>1</Current>
-    </schema>
-    <schema id="4" parent="1" name="NULLID"/>
-    <schema id="5" parent="1" name="SQLJ"/>
-    <schema id="6" parent="1" name="SYS"/>
-    <schema id="7" parent="1" name="SYSCAT"/>
-    <schema id="8" parent="1" name="SYSCS_DIAG"/>
-    <schema id="9" parent="1" name="SYSCS_UTIL"/>
-    <schema id="10" parent="1" name="SYSFUN"/>
-    <schema id="11" parent="1" name="SYSIBM"/>
-    <schema id="12" parent="1" name="SYSPROC"/>
-    <schema id="13" parent="1" name="SYSSTAT"/>
-    <table id="14" parent="2" name="DEPARTMENT"/>
-    <table id="15" parent="2" name="PERSON"/>
-    <table id="16" parent="2" name="POSITION"/>
-    <column id="17" parent="14" name="ID_DEP">
+    <schema id="3" parent="1" name="NULLID"/>
+    <schema id="4" parent="1" name="SQLJ"/>
+    <schema id="5" parent="1" name="SYS"/>
+    <schema id="6" parent="1" name="SYSCAT"/>
+    <schema id="7" parent="1" name="SYSCS_DIAG"/>
+    <schema id="8" parent="1" name="SYSCS_UTIL"/>
+    <schema id="9" parent="1" name="SYSFUN"/>
+    <schema id="10" parent="1" name="SYSIBM"/>
+    <schema id="11" parent="1" name="SYSPROC"/>
+    <schema id="12" parent="1" name="SYSSTAT"/>
+    <table id="13" parent="2" name="DEPARTMENT"/>
+    <table id="14" parent="2" name="PERSON"/>
+    <table id="15" parent="2" name="POSITION"/>
+    <column id="16" parent="13" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="14" name="NAME">
+    <column id="17" parent="13" name="NAME">
       <Position>2</Position>
       <DataType>VARCHAR(100)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="14" name="ADDRESS">
+    <column id="18" parent="13" name="ADDRESS">
       <Position>3</Position>
       <DataType>VARCHAR(500)|12</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <key id="20" parent="14" name="SQL180226144423830">
+    <key id="19" parent="13" name="SQL180301194442800">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID_DEP</ColNames>
+      <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="21" parent="15" name="ID_PERSON">
+    <column id="20" parent="14" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="15" name="FULL_NAME">
+    <column id="21" parent="14" name="FULL_NAME">
       <Position>2</Position>
-      <DataType>VARCHAR(100)|12</DataType>
+      <DataType>VARCHAR(200)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="15" name="POS_ID">
+    <column id="22" parent="14" name="POSITION_ID">
       <Position>3</Position>
       <DataType>BIGINT(19)|-5</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="15" name="DEP_ID">
+    <column id="23" parent="14" name="DEPARTMENT_ID">
       <Position>4</Position>
       <DataType>BIGINT(19)|-5</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="15" name="SALARY">
+    <column id="24" parent="14" name="SALARY">
       <Position>5</Position>
       <DataType>NUMERIC(10,2)|2</DataType>
     </column>
-    <key id="26" parent="15" name="SQL180226145519640">
+    <key id="25" parent="14" name="SQL180301194443060">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID_PERSON</ColNames>
+      <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="27" parent="16" name="ID_POZ">
+    <column id="26" parent="15" name="ID">
       <Position>1</Position>
       <DataType>BIGINT(19)|-5</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="16" name="NAME">
+    <column id="27" parent="15" name="NAME">
       <Position>2</Position>
       <DataType>VARCHAR(100)|12</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <key id="29" parent="16" name="SQL180226142657720">
+    <key id="28" parent="15" name="SQL180301194442450">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>ID_POZ</ColNames>
+      <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

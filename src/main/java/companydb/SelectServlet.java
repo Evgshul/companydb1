@@ -9,30 +9,30 @@ import javax.xml.transform.Result;
 import java.awt.geom.QuadCurve2D;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.sql.*;
 
 @WebServlet(name = "SelectServlet", urlPatterns = "/select")
 public class SelectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String fullName = request.getParameter("fullName");
+        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/company");
+             PreparedStatement stmt = conn.prepareStatement(// iskljuchaet sql injection
+                     "SELECT * FROM PERSON WHERE FULL_NAME = ?");
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try (Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/companydb");
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM PERSON ");
              PrintWriter out = response.getWriter();
         ) {
+            stmt.setString(1,fullName);
+            ResultSet rs = stmt.executeQuery();
             out.format("| %5s | %-30s | %15s | %10s | %10s |\n", "ID", "Name", "Salary", "Position", "Department");
             while (rs.next()) {
-                long id = rs.getLong("ID_PERSON");
+                long id = rs.getLong("ID");
                 String name = rs.getString("FULL_NAME");
-                long posId = rs.getLong("POS_ID");
-                long depId = rs.getLong("DEP_ID");
-                Double salary = rs.getDouble("SALARY");
+                long posId = rs.getLong("POSITION_ID");
+                long depId = rs.getLong("DEPARTMENT_ID");
+                BigDecimal salary = rs.getBigDecimal("SALARY");
                 out.format("| %5s | %-30s | %15s | %10s | %10s |\n", id, name, salary, posId, depId);
-                //System.out.println("id: " + id + "; name" + name + "Pos ID: "
-                 //+ posId + " Dep ID: " + depId + "Dalary: " + salary);
+
             }
         } catch (SQLException e) {
             System.out.println("Something wrong");
